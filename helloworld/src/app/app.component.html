@@ -1,0 +1,3 @@
+<h1>Hello World Application</h1>
+<app-login (loginOutput)="onLoginOk($event)" *ngIf="!isLogged"></app-login>
+<app-home [username]="loginInput" *ngIf="isLogged"></app-home>

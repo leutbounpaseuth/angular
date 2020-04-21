@@ -8,4 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title : string = 'contact';
   isLogged : boolean = false;
+  loginInput : string = '?';
+
+  onLoginOk(s : string) {
+    this.isLogged = true;
+    this.loginInput = s;
+  }
 }

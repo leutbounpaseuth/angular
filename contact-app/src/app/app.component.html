@@ -1,2 +1,3 @@
 <app-login *ngIf="!isLogged" (loginOutput)="onLoginOk($event)"></app-login>
 <app-contact-mgr *ngIf="isLogged" [username]="loginInput"></app-contact-mgr>
+<app-statusbar></app-statusbar>

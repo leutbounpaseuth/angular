@@ -6,11 +6,15 @@ export class BaseService {
   protected callService(observable, callback) {
     observable.subscribe(
       (response) => {
+        console.log('response=' + response);
         if (callback) {
           callback(response);
         }
       },
-      (err) => this.sharedData.reportError(err)
+      (err) => {
+        console.log('err=' + err);
+        this.sharedData.reportError(err);
+      }
     );
   }
 }

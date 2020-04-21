@@ -1,1 +1,15 @@
-<p>login works!</p>
+<label for="username">Username:</label>&nbsp;
+<input
+  type="text"
+  id="username"
+  name="username"
+  (blur)="onBlurUsername($event)"
+/><br /><br />
+<label for="password">Password:</label>&nbsp;
+<input
+  type="password"
+  id="password"
+  name="password"
+  (blur)="onBlurPassword($event)"
+/><br /><br />
+<button type="button" (click)="loginClick()">Login</button>

@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-contact-mgr',
   templateUrl: './contact-mgr.component.html',
-  styleUrls: ['./contact-mgr.component.css']
+  styleUrls: ['./contact-mgr.component.css'],
 })
 export class ContactMgrComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  @Input()
+  username = '?';
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

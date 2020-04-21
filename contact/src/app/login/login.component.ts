@@ -9,14 +9,28 @@ export class LoginComponent implements OnInit {
 
   constructor() { }
 
+  username : string = '';
+  password : string = '';
+
   @Output()
   loginOutput = new EventEmitter<string>();
 
   ngOnInit(): void {
   }
 
+  onBlurUsername(ev)
+  {
+    this.username = ev.target.value;
+  } 
+
+  onBlurPassword(ev)
+  {
+    this.password = ev.target.value;
+  } 
+
+
   loginClick()
   {
-    this.loginOutput.emit('Leut Bounpaseuth');
+    this.loginOutput.emit(this.username);
   } 
 }

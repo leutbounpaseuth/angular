@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { SessionService } from '../session.service';
 
 @Component({
   selector: 'app-login',
@@ -7,10 +8,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(public sessionService: SessionService) { }
 
-  username : string = '';
-  password : string = '';
+  username: string = '';
+  password: string = '';
 
   @Output()
   loginOutput = new EventEmitter<string>();
@@ -18,19 +19,22 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onBlurUsername(ev)
-  {
+  onBlurUsername(ev) {
     this.username = ev.target.value;
-  } 
+  }
 
-  onBlurPassword(ev)
-  {
+  onBlurPassword(ev) {
     this.password = ev.target.value;
-  } 
+  }
 
 
-  loginClick()
-  {
-    this.loginOutput.emit(this.username);
-  } 
+  loginClick() {
+    if (this.sessionService.checkLogin(this.username, this.password)) {
+      this.loginOutput.emit(this.username + ' OK');
+    }
+    else {
+      this.loginOutput.emit('ERROR');
+    }
+
+  }
 }

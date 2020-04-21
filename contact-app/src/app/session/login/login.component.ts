@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginClick() {
-    this.sessionService.checkLogin(this.username, this.password, (response) => {
+    this.sessionService.login(this.username, this.password, (response) => {
       this.loginOutput.emit('' + response.sessionId);
     });
   }

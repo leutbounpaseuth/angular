@@ -1,9 +1,16 @@
-import { Injectable } from '@angular/core';
+import { SharedDataService } from '../app-base/shared-data.service';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class BaseService {
+  constructor(protected sharedData: SharedDataService) {}
 
-  constructor() { }
+  protected callService(observable, callback) {
+    observable.subscribe(
+      (response) => {
+        if (callback) {
+          callback(response);
+        }
+      },
+      (err) => this.sharedData.reportError(err)
+    );
+  }
 }

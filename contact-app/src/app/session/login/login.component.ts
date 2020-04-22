@@ -17,15 +17,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onBlurUsername(ev) {
-    this.username = ev.target.value;
-  }
-
-  onBlurPassword(ev) {
-    this.password = ev.target.value;
-  }
-
-  loginClick() {
+  onSubmit() {
     this.sessionService.login(this.username, this.password, (response) => {
       this.loginOutput.emit('' + response.sessionId);
     });

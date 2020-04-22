@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Contact } from '../contact';
 
 @Component({
@@ -15,8 +15,11 @@ export class ContactListItemComponent implements OnInit {
   @Input()
   isEven: boolean;
 
+  @Input()
+  isSelected: boolean;
+
   @Output()
-  selectedContact: Contact;
+  selectedContact = new EventEmitter<Contact>();
 
   ngOnInit(): void {}
 
@@ -24,15 +27,15 @@ export class ContactListItemComponent implements OnInit {
     return {
       even: this.isEven,
       odd: !this.isEven,
-      selected: this.selectedContact?.id == this.contact.id ? true : false,
+      selected: this.isSelected,
     };
   }
 
   selectContact(c: Contact) {
-    if (this.selectedContact?.id == this.contact.id) {
-      this.selectedContact = null;
+    if (!this.isSelected) {
+      this.selectedContact.emit(c);
     } else {
-      this.selectedContact = c;
+      this.selectedContact.emit(null);
     }
   }
 }

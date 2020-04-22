@@ -6,6 +6,8 @@
     *ngFor="let contact of contactList; let evenOdd = even"
     [isEven]="evenOdd"
     [contact]="contact"
+    (selectedContact)="onSelected($event)"
+    [isSelected]="contact.id === selectedContact?.id"
   >
   </app-contact-list-item>
 </div>

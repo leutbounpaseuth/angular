@@ -14,10 +14,15 @@ export class ContactMgrComponent implements OnInit {
   username = '?';
 
   contactList: Contact[];
+  selectedContact: Contact;
 
   ngOnInit(): void {
     this.contactService.listAll((response) => {
       this.contactList = response;
     });
+  }
+
+  onSelected(c: Contact) {
+    this.selectedContact = c;
   }
 }

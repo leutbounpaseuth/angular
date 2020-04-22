@@ -1,1 +1,25 @@
-<p>contact-detail works!</p>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="username">Username:</label>&nbsp;
+    <input
+      type="text"
+      id="firstName"
+      formControlName="firstName"
+      [value]="contact?.firstName"
+    />
+  </div>
+
+  <div formGroupName="address">
+    <div>
+      <label for="streetAddress1">Street Address</label>&nbsp;
+      <input
+        type="text"
+        id="streetAddress1"
+        formControlName="streetAddress1"
+        [value]="contact?.address?.streetAddress1"
+      />
+    </div>
+  </div>
+
+  <button type="submit">Save</button>
+</form>

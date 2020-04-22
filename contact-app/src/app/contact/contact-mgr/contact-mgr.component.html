@@ -1,13 +1,17 @@
-<p>Bonjour {{ username }}</p>
 <h2>Contacts</h2>
 
-<div>
-  <app-contact-list-item
-    *ngFor="let contact of contactList; let evenOdd = even"
-    [isEven]="evenOdd"
-    [contact]="contact"
-    (selectedContact)="onSelected($event)"
-    [isSelected]="contact.id === selectedContact?.id"
-  >
-  </app-contact-list-item>
+<div style="display: flex;">
+  <div>
+    <app-contact-list-item
+      *ngFor="let contact of contactList; let evenOdd = even"
+      [isEven]="evenOdd"
+      [contact]="contact"
+      (selectedContact)="onSelected($event)"
+      [isSelected]="contact.id === selectedContact?.id"
+    >
+    </app-contact-list-item>
+  </div>
+  <div>
+    <app-contact-detail [contact]="selectedContact"></app-contact-detail>
+  </div>
 </div>

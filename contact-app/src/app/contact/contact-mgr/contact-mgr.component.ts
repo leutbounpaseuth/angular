@@ -10,9 +10,6 @@ import { Contact } from '../contact';
 export class ContactMgrComponent implements OnInit {
   constructor(public contactService: ContactService) {}
 
-  @Input()
-  username = '?';
-
   contactList: Contact[];
   selectedContact: Contact;
 

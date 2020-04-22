@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Contact } from '../contact';
 
 @Component({
@@ -15,12 +15,24 @@ export class ContactListItemComponent implements OnInit {
   @Input()
   isEven: boolean;
 
+  @Output()
+  selectedContact: Contact;
+
+  ngOnInit(): void {}
+
   getClasses() {
     return {
       even: this.isEven,
       odd: !this.isEven,
+      selected: this.selectedContact?.id == this.contact.id ? true : false,
     };
   }
 
-  ngOnInit(): void {}
+  selectContact(c: Contact) {
+    if (this.selectedContact?.id == this.contact.id) {
+      this.selectedContact = null;
+    } else {
+      this.selectedContact = c;
+    }
+  }
 }

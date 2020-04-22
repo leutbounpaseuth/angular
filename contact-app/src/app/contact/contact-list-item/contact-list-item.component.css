@@ -1,7 +1,13 @@
 .even {
   background-color: blue;
+  font-size: 10px;
 }
 
 .odd {
   background-color: red;
+  font-size: 10px;
+}
+
+.selected {
+  font-size: 20px;
 }

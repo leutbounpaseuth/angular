@@ -1,28 +1,11 @@
 <p>Bonjour {{ username }}</p>
 <h2>Contacts</h2>
 
-<table>
-  <tr>
-    <th>Prénom</th>
-    <th>Nom</th>
-    <th>Profession</th>
-    <th>Matricule</th>
-    <th>Date de naissance</th>
-    <th>Lieu de naissance</th>
-    <th>Adresse</th>
-  </tr>
-  <tr *ngFor="let contact of contactList; index as i">
-    <td>{{ contact?.firstName }}</td>
-    <td>{{ contact?.lastName }}</td>
-    <td>{{ contact?.profession }}</td>
-    <td>{{ contact?.socialSecurityNumber }}</td>
-    <td>{{ contact?.birthDate }}</td>
-    <td>{{ contact?.birthPlace }}</td>
-    <td>
-      {{ contact?.address?.streetAddress1 }}<br />{{
-        contact?.address?.postalCode
-      }}
-      {{ contact?.address?.city }}
-    </td>
-  </tr>
-</table>
+<div>
+  <app-contact-list-item
+    *ngFor="let contact of contactList; let evenOdd = even"
+    [isEven]="evenOdd"
+    [contact]="contact"
+  >
+  </app-contact-list-item>
+</div>
